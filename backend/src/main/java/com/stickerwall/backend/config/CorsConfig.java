@@ -12,7 +12,8 @@ public class CorsConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOriginPatterns(
                         "http://localhost:4173",
-                        "https://*.vercel.app"
+                        "https://*.vercel.app",
+                        "https://stickywall-2m8fg64h5-aradhya-7-7s-projects.vercel.app/"
                 )
                 .allowedMethods("*")
                 .allowedHeaders("*")
