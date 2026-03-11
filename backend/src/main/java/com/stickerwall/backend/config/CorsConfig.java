@@ -1,23 +1,23 @@
 package com.stickerwall.backend.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
 
 @Configuration
-public class CorsConfig implements WebMvcConfigurer {
+public class CorsConfig {
 
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
 
-        registry.addMapping("/**")
-                .allowedOriginPatterns(
-                        "http://localhost:4173",
-                        "https://*.vercel.app",
-                        "https://stickywall-2m8fg64h5-aradhya-7-7s-projects.vercel.app/",
-                        "https://stickywall-git-main-aradhya-7-7s-projects.vercel.app/"
-                )
-                .allowedMethods("*")
-                .allowedHeaders("*")
-                .allowCredentials(true);
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedOrigins("https://stickywall.vercel.app")
+                        .allowedMethods("*")
+                        .allowedHeaders("*");
+            }
+        };
     }
 }
